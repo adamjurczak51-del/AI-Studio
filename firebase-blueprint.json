@@ -1,0 +1,194 @@
+{
+  "entities": {
+    "Household": {
+      "title": "Household",
+      "description": "Represents the family household space",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "familyName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "adminMemberId": { "type": "string" },
+        "adminName": { "type": "string" }
+      },
+      "required": ["id", "familyName"]
+    },
+    "AuthUser": {
+      "title": "AuthUser",
+      "description": "Commercial multi-account credential registry",
+      "type": "object",
+      "properties": {
+        "login": { "type": "string" },
+        "name": { "type": "string" },
+        "password": { "type": "string" },
+        "pin": { "type": "string" },
+        "householdId": { "type": "string" },
+        "memberId": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["login", "name", "householdId", "memberId", "role"]
+    },
+    "PersonalizedInvite": {
+      "title": "PersonalizedInvite",
+      "description": "Personalized invite token for individual family member onboarding",
+      "type": "object",
+      "properties": {
+        "token": { "type": "string" },
+        "householdId": { "type": "string" },
+        "householdName": { "type": "string" },
+        "invitedByMemberName": { "type": "string" },
+        "targetMemberId": { "type": "string" },
+        "targetMemberName": { "type": "string" },
+        "targetRole": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["token", "householdId", "householdName", "targetMemberId", "targetRole"]
+    },
+    "FamilyMember": {
+      "title": "FamilyMember",
+      "description": "Family member profile with roles and permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "avatarEmoji": { "type": "string" },
+        "pin": { "type": "string" },
+        "login": { "type": "string" }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Financial bank account or cash wallet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "balance": { "type": "number" },
+        "type": { "type": "string" }
+      },
+      "required": ["id", "name", "balance"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Expense or income entry or scanned receipt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "title": { "type": "string" },
+        "amount": { "type": "number" }
+      },
+      "required": ["id", "date", "title", "amount"]
+    },
+    "PantryItem": {
+      "title": "PantryItem",
+      "description": "Item stored in pantry or storage room",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unit": { "type": "string" }
+      },
+      "required": ["id", "name", "quantity"]
+    },
+    "ShoppingListItem": {
+      "title": "ShoppingListItem",
+      "description": "Shopping list item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "quantity": { "type": "number" },
+        "isCompleted": { "type": "boolean" }
+      },
+      "required": ["id", "name"]
+    },
+    "FamilyMessage": {
+      "title": "FamilyMessage",
+      "description": "Family communicator message or voice note",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "senderName": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "text", "senderName"]
+    },
+    "CalendarEvent": {
+      "title": "CalendarEvent",
+      "description": "Shared calendar event",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "startTime": { "type": "string" }
+      },
+      "required": ["id", "title", "date", "startTime"]
+    },
+    "Vehicle": {
+      "title": "Vehicle",
+      "description": "Vehicle registered in the garage",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "plateNumber": { "type": "string" },
+        "currentFuelLiters": { "type": "number" }
+      },
+      "required": ["id", "name", "plateNumber"]
+    }
+  },
+  "firestore": {
+    "/households/{householdId}": {
+      "schema": "Household",
+      "description": "Collection of households"
+    },
+    "/authUsers/{loginKey}": {
+      "schema": "AuthUser",
+      "description": "Registry of logins and passwords for multi-family authentication"
+    },
+    "/invites/{inviteToken}": {
+      "schema": "PersonalizedInvite",
+      "description": "Personalized family invitation tokens"
+    },
+    "/households/{householdId}/members/{memberId}": {
+      "schema": "FamilyMember",
+      "description": "Members of a household"
+    },
+    "/households/{householdId}/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Accounts of a household"
+    },
+    "/households/{householdId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Transactions of a household"
+    },
+    "/households/{householdId}/pantry/{pantryId}": {
+      "schema": "PantryItem",
+      "description": "Pantry items of a household"
+    },
+    "/households/{householdId}/shoppingList/{itemId}": {
+      "schema": "ShoppingListItem",
+      "description": "Shopping list of a household"
+    },
+    "/households/{householdId}/messages/{messageId}": {
+      "schema": "FamilyMessage",
+      "description": "Messages in the household communicator"
+    },
+    "/households/{householdId}/calendar/{eventId}": {
+      "schema": "CalendarEvent",
+      "description": "Calendar events of a household"
+    },
+    "/households/{householdId}/vehicles/{vehicleId}": {
+      "schema": "Vehicle",
+      "description": "Vehicles of a household"
+    }
+  }
+}

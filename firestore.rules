@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Households and all subcollections
+    match /households/{householdId} {
+      allow read, write: if true;
+
+      match /{document=**} {
+        allow read, write: if true;
+      }
+    }
+
+    // Commercial auth registry (multi-tenant logins)
+    match /authUsers/{loginKey} {
+      allow read, write: if true;
+    }
+
+    // Personalized member invitation tokens
+    match /invites/{inviteToken} {
+      allow read, write: if true;
+    }
+
+    // Allow general read/write for any documents (connection tests, audit)
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

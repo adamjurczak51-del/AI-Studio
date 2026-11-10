@@ -1,0 +1,6 @@
+{
+  "name": "Domowy Budżet & Spiżarnia AI",
+  "description": "Zaawansowany system budżetu domowego z wielokontowością, uprawnieniami rodziny, inteligentnym skanowaniem paragonów OCR oraz automatycznym magazynem spiżarni.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

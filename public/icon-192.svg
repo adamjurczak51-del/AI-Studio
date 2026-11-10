@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#grad)" />
+  <!-- Sparkle & Wallet glyph -->
+  <path d="M52 68C52 59.1634 59.1634 52 68 52H124C132.837 52 140 59.1634 140 68V124C140 132.837 132.837 140 124 140H68C59.1634 140 52 132.837 52 124V68Z" fill="white" fill-opacity="0.2" />
+  <path d="M60 76H132C136.418 76 140 79.5817 140 84V122C140 127.523 135.523 132 130 132H62C56.4772 132 52 127.523 52 122V84C52 79.5817 55.5817 76 60 76Z" fill="white" />
+  <circle cx="120" cy="104" r="8" fill="#4f46e5" />
+  <!-- AI sparkle star top right -->
+  <path d="M136 44L138.5 51.5L146 54L138.5 56.5L136 64L133.5 56.5L126 54L133.5 51.5L136 44Z" fill="#fbbf24" />
+</svg>

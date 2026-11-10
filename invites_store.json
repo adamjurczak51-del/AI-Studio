@@ -1,0 +1,9 @@
+{
+  "test-123": {
+    "token": "test-123",
+    "householdId": "h-1",
+    "targetMemberName": "Anna",
+    "status": "PENDING",
+    "createdAt": "2026-11-09T11:06:02.972Z"
+  }
+}
