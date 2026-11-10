@@ -1,12 +1,22 @@
 // PWA Service Worker for Domowy Budżet & Spiżarnia AI
-const CACHE_NAME = 'domowy-budzet-v2';
+const CACHE_NAME = 'domowy-budzet-v3';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((name) => {
+          if (name !== CACHE_NAME) {
+            return caches.delete(name);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 // Chromium / Google Chrome requires a registered fetch event listener
